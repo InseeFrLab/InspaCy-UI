@@ -1,0 +1,37 @@
+#buttons {
+  position: fixed;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+  background-color: white;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.17);
+  > button {
+    cursor: pointer;
+    display: block;
+    background-color: transparent;
+    border: none;
+    padding: 1.5em;
+    text-align: left;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.17);
+    &:first-child {
+      border-top-right-radius: 10px;
+      border: none;
+    }
+    &:last-child {
+      border-bottom-right-radius: 10px;
+    }
+    &:hover {
+      box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.68);
+      color: rgba(255, 0, 0, 0.8);
+    }
+    > svg {
+      margin-right: 0.5em;
+      width: 1em;
+    }
+  }
+}
