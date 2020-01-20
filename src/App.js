@@ -22,8 +22,10 @@ function App() {
       />
       <Buttons
         setShowModale={setShowModale}
+        showModale={showModale}
         setResultValue={setResultValue}
         entityList={entityList}
+        resultValue={resultValue}
         textValue={textValue}
         setGraphData={setGraphData}
         selectedEntities={selectedEntities}
@@ -40,6 +42,7 @@ function App() {
         setEntityList={setEntityList}
         selectedEntities={selectedEntities}
         setSelectedEntities={setSelectedEntities}
+        setResultValue={setResultValue}
       />
       )}
     </section>
