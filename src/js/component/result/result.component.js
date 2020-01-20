@@ -14,14 +14,14 @@ const Result = ({
   setSelectedEntities
 }) => {
   const selectEntity = entityId => {
-    ResultFunctions.loadSelectedEntities(
+    let newSelectedEntities = ResultFunctions.loadSelectedEntities(
       entityId,
       selectedEntities,
       setSelectedEntities
     );
     ResultFunctions.loadTextAndEntity(
       resultValue,
-      selectedEntities,
+      newSelectedEntities,
       textRender,
       entityList,
       setTextRender,

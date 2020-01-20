@@ -11,7 +11,7 @@ const ButtonFunctions = {
     setTextRender,
     setEntityList
   ) => {
-    const url = window._env_.API_URL;
+    const url = window._env_.API_URL || process.env.REACT_APP_API_URL;
     if (!url) {
       throw new Error(
         "Needing REACT_APP_API_URL for knowing which is API's endpoint"
