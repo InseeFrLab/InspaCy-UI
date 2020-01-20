@@ -59,10 +59,13 @@ const ResultFunctions = {
     return { newTextRender: newTextRender, newEntityList: newEntityList };
   },
   loadSelectedEntities: (entityId, selectedEntities, setSelectedEntities) => {
-    if (!selectedEntities.includes(entityId))
+    if (!selectedEntities.includes(entityId)) {
       setSelectedEntities([...selectedEntities, entityId]);
-    else
+      return [...selectedEntities, entityId];
+    } else {
       setSelectedEntities(selectedEntities.filter(elem => elem !== entityId));
+      return selectedEntities.filter(elem => elem !== entityId);
+    }
   },
   loadGraphData: (entityList, setGraphData) => {
     let datas = Object.values(entityList).sort((a, b) => b.nb - a.nb);
