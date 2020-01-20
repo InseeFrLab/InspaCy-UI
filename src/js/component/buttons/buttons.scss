@@ -33,5 +33,13 @@
       margin-right: 0.5em;
       width: 1em;
     }
+    @media screen and (max-width: 1350px) {
+      > span {
+        display: none;
+      }
+      > svg {
+        margin-right: 0em;
+      }
+    }
   }
 }
