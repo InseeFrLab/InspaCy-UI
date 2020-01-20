@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "./result.scss";
 import ResultFunctions from "./result.functions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { Pie } from "react-chartjs-2";
 
 const Result = ({
@@ -11,7 +13,8 @@ const Result = ({
   entityList,
   setEntityList,
   selectedEntities,
-  setSelectedEntities
+  setSelectedEntities,
+  setResultValue
 }) => {
   const selectEntity = entityId => {
     let newSelectedEntities = ResultFunctions.loadSelectedEntities(
@@ -30,8 +33,8 @@ const Result = ({
     );
   };
   const escFunction = event => {
-    if (event.keyCode === 27) {
-      alert("TODO : hide result panel..");
+    if (event.keyCode === 27 && Object.keys(resultValue).length) {
+      setResultValue({});
     }
   };
 
@@ -41,7 +44,7 @@ const Result = ({
     return () => {
       document.removeEventListener("keydown", escFunction, false);
     };
-  }, []);
+  });
 
   return (
     <section
@@ -60,7 +63,9 @@ const Result = ({
           <div>
             {!Object.keys(resultValue).includes("ents") ||
             !resultValue.ents.length ? (
-              <p style={{ fontStyle: "italic" }}>Aucune entité trouvée</p>
+              <p style={{ fontStyle: "italic", color: "#C5C5C5" }}>
+                Aucune entité trouvée
+              </p>
             ) : (
               Object.values(entityList).map((elem, index) => {
                 return (
@@ -132,6 +137,9 @@ const Result = ({
               </>
             )}
         </div>
+        <button id="leave-button" onClick={() => setResultValue({})}>
+          Esc <FontAwesomeIcon icon={faTimesCircle} size="lg" />
+        </button>
       </div>
     </section>
   );
