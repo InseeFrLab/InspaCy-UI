@@ -136,10 +136,7 @@ const Result = ({
                       data={graphData}
                       options={{
                         legend: {
-                          position: "left",
-                          labels: {
-                            fontSize: 10
-                          }
+                          position: "left"
                         }
                       }}
                     ></Pie>
