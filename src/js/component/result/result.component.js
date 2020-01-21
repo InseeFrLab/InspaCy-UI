@@ -103,14 +103,14 @@ const Result = ({
           {Object.keys(resultValue).includes("ents") &&
             resultValue.ents.length !== 0 && (
               <>
-                <div className="half">
+                <div>
                   {Object.keys(entityList).length && (
                     <table>
                       <thead>
                         <tr>
+                          <th>Rang</th>
                           <th>Label</th>
                           <th>Apparitions</th>
-                          <th>Rang</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -129,9 +129,20 @@ const Result = ({
                     </table>
                   )}
                 </div>
-                <div className="half">
+                <div>
+                  <h3>Visualisation</h3>
                   {(graphData.length || Object.keys(graphData).length) && (
-                    <Pie data={graphData}></Pie>
+                    <Pie
+                      data={graphData}
+                      options={{
+                        legend: {
+                          position: "left",
+                          labels: {
+                            fontSize: 10
+                          }
+                        }
+                      }}
+                    ></Pie>
                   )}
                 </div>
               </>

@@ -130,7 +130,8 @@
         background-color: rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
         padding: 1em;
-        margin: auto;
+        margin: 2em 0;
+        width: 100%;
         tr {
           th,
           td {
@@ -139,6 +140,16 @@
               border-left: 1px solid rgba(0, 0, 0, 0.1);
             }
           }
+        }
+      }
+      > div:last-child {
+        background-color: white;
+        padding: 2em;
+        h3 {
+          margin-bottom: 3em;
+        }
+        canvas {
+          margin-bottom: 1em;
         }
       }
     }

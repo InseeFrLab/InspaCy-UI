@@ -73,7 +73,6 @@ const ResultFunctions = {
       labels: [...datas.map(a => a.value)],
       datasets: [
         {
-          label: "Apparition",
           data: [...datas.map(a => a.nb)],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
