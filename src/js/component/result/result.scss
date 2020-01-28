@@ -6,7 +6,8 @@
   height: 100%;
   z-index: 1000;
   // background: linear-gradient(to top right, #6d6d6d 40%, #ad7c7c);
-  background: linear-gradient(to top right, #774b4b, #ad7c7c 70%);
+  // background: linear-gradient(to top right, #774b4b, #ad7c7c 70%);
+  background: radial-gradient(#ad7c7c, #774b4b 70%);
   transition: 0.5s linear;
   overflow: auto;
   padding: 2em 0 4em;

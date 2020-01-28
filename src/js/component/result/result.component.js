@@ -59,7 +59,7 @@ const Result = ({
         </div>
         <hr />
         <div id="entity-lister">
-          <h3>Liste des entités rencontrées</h3>
+          <h3>Liste des concepts rencontrés</h3>
           <div>
             {!Object.keys(resultValue).includes("ents") ||
             !resultValue.ents.length ? (
@@ -90,7 +90,7 @@ const Result = ({
             <p className="half">
               <span id="nb-entity">{Object.keys(entityList).length || 0}</span>
               <br />
-              entités ont été trouvé
+              concepts ont été trouvé
             </p>
             <p className="half">
               <span id="nb-entity">
