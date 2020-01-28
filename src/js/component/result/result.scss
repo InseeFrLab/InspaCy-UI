@@ -5,7 +5,8 @@
   width: 100%;
   height: 100%;
   z-index: 1000;
-  background: linear-gradient(to top right, #6d6d6d 40%, #ad7c7c);
+  // background: linear-gradient(to top right, #6d6d6d 40%, #ad7c7c);
+  background: linear-gradient(to top right, #774b4b, #ad7c7c 70%);
   transition: 0.5s linear;
   overflow: auto;
   padding: 2em 0 4em;
@@ -89,8 +90,10 @@
             background-color: red;
           }
           &:hover {
-            background-color: rgb(205, 0, 0);
             cursor: pointer;
+            transform: scale(1.1);
+            box-shadow: none;
+            // background-color: rgb(205, 0, 0);
           }
         }
       }
@@ -128,7 +131,7 @@
         }
       }
       table {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: white;
         box-sizing: border-box;
         padding: 1em;
         margin: 2em 0;

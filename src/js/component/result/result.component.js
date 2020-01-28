@@ -137,6 +137,19 @@ const Result = ({
                       options={{
                         legend: {
                           position: "left"
+                        },
+                        tooltips: {
+                          callbacks: {
+                            afterLabel: function(tooltipItem, data) {
+                              var dataset = data["datasets"][0];
+                              var percent = Math.round(
+                                (dataset["data"][tooltipItem["index"]] /
+                                  dataset["_meta"][0]["total"]) *
+                                  100
+                              );
+                              return "(" + percent + "%)";
+                            }
+                          }
                         }
                       }}
                     ></Pie>
