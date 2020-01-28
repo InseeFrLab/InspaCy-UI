@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog, faFileUpload, faSave } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faFileUpload } from "@fortawesome/free-solid-svg-icons";
 import "./buttons.scss";
 import ButtonFunctions from "./buttons.functions";
 
@@ -32,7 +32,7 @@ const Buttons = ({
         );
     } else if (
       event.ctrlKey &&
-      event.keyCode === 73 &&
+      event.keyCode === 188 &&
       !Object.keys(resultValue).length
     ) {
       setShowModale(true);
@@ -65,16 +65,12 @@ const Buttons = ({
           )
         }
       >
-        <FontAwesomeIcon icon={faCog} size="lg" />
+        <FontAwesomeIcon icon={faPlay} size="lg" />
         <span>Lancer le processus (ctrl + entrée)</span>
       </button>
       <button onClick={() => setShowModale(true)}>
         <FontAwesomeIcon icon={faFileUpload} size="lg" />
-        <span>Charger un fichier (ctrl + i)</span>
-      </button>
-      <button onClick={() => ButtonFunctions.downloadFile()}>
-        <FontAwesomeIcon icon={faSave} size="lg" />
-        <span>Télécharger le fichier</span>
+        <span>Charger un fichier (ctrl + ,)</span>
       </button>
     </div>
   );
