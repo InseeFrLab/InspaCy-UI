@@ -5,25 +5,25 @@ div#editor {
   top: 0%;
   left: 0%;
   background-color: #dedede;
-}
 
-textarea {
-  background-color: white;
-  border: none;
-  resize: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
-  line-height: 1.8em;
-  width: 50em;
-  box-sizing: border-box;
-  height: calc(100% - 3em);
-  top: 1.5em;
-  position: relative;
-  max-width: 80%;
-  padding: 1em;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.17);
-  &:focus {
-    outline-color: rgba(255, 0, 0, 0.8);
+  textarea {
+    background-color: white;
+    border: none;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    line-height: 1.8em;
+    width: 50em;
+    box-sizing: border-box;
+    height: calc(100% - 3em);
+    top: 1.5em;
+    position: relative;
+    max-width: 80%;
+    padding: 1em;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.17);
+    &:focus {
+      outline-color: rgba(255, 0, 0, 0.8);
+    }
   }
 }
 
