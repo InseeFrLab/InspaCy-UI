@@ -38,6 +38,7 @@ const Result = ({
       ResultFunctions.textRenderer
     );
   };
+  const sendFeedback = ResultFunctions.sendFeedback;
   const escFunction = event => {
     if (event.keyCode === 27 && Object.keys(resultValue).length) {
       setResultValue({});
@@ -49,6 +50,7 @@ const Result = ({
     [badFeedback, setBadFeedback] = useState(false),
     [goodFeedback, setGoodFeedback] = useState(false),
     [sending, setSending] = useState(false),
+    [userName, setUserName] = useState(""),
     [feedBackText, setFeedBackText] = useState("");
 
   useEffect(() => {
@@ -188,7 +190,13 @@ const Result = ({
           }}
         ></div>
         <div id="feedback-modale">
-          <h2>Votre avis</h2>
+          <h2>Votre avis compte</h2>
+          <input
+            type="text"
+            value={userName}
+            placeholder="Nom et prénom"
+            onChange={event => setUserName(event.target.value)}
+          />
           <h4>Comment évaluez-vous ce résultat ?</h4>
           <div id="modale-btns">
             <button
@@ -216,11 +224,11 @@ const Result = ({
               onChange={event => setFeedBackText(event.target.value)}
             ></textarea>
           )}
-          {(badFeedback || goodFeedback) && (
+          {(badFeedback || goodFeedback) && userName !== "" && (
             <button
               onClick={() =>
-                ResultFunctions.sendFeedback(
-                  { goodFeedback, badFeedback, feedBackText },
+                sendFeedback(
+                  { goodFeedback, badFeedback, feedBackText, userName },
                   setShowFeedbackModale,
                   setSending
                 )
