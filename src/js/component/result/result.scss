@@ -200,6 +200,7 @@
     box-sizing: border-box;
 
     &.shown {
+      position: fixed;
       z-index: 1000;
       opacity: 1;
     }
@@ -222,16 +223,22 @@
       left: 50%;
       background-color: white;
       transform: translate(-50%, -50%);
-      padding: 1em 4em 2.5em;
+      padding: 1em 3em;
       width: fit-content;
       box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.38);
+
+      > * {
+        margin: 1.5rem auto;
+        display: block;
+        box-sizing: border-box;
+      }
 
       #modale-btns {
         button {
           background-color: transparent;
           border: none;
           font-size: 2em;
-          margin: 0 1em 1em;
+          margin: 0 1em;
           cursor: pointer;
 
           &:first-child {
@@ -255,7 +262,6 @@
       }
 
       > button {
-        margin-top: 1.5em;
         font-size: 1em;
         background-color: transparent;
         outline: none;

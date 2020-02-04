@@ -48,7 +48,8 @@ const Result = ({
   const [showFeedbackModale, setShowFeedbackModale] = useState(false),
     [badFeedback, setBadFeedback] = useState(false),
     [goodFeedback, setGoodFeedback] = useState(false),
-    [sending, setSending] = useState(false);
+    [sending, setSending] = useState(false),
+    [feedBackText, setFeedBackText] = useState("");
 
   useEffect(() => {
     document.addEventListener("keydown", escFunction, false);
@@ -209,12 +210,17 @@ const Result = ({
               <FontAwesomeIcon icon={faFrown} size="lg" />
             </button>
           </div>
-          {badFeedback && <textarea></textarea>}
+          {badFeedback && (
+            <textarea
+              placeholder="Votre retour"
+              onChange={event => setFeedBackText(event.target.value)}
+            ></textarea>
+          )}
           {(badFeedback || goodFeedback) && (
             <button
               onClick={() =>
                 ResultFunctions.sendFeedback(
-                  { goodFeedback, badFeedback },
+                  { goodFeedback, badFeedback, feedBackText },
                   setShowFeedbackModale,
                   setSending
                 )
