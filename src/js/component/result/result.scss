@@ -242,7 +242,8 @@
           cursor: pointer;
 
           &:first-child {
-            &:hover {
+            &:hover,
+            &:focus {
               color: rgb(18, 155, 18);
             }
             &.chosen {
@@ -251,7 +252,8 @@
           }
 
           &:last-child {
-            &:hover {
+            &:hover,
+            &:focus {
               color: rgb(155, 18, 18);
             }
             &.chosen {
@@ -269,7 +271,9 @@
         border: none;
         padding: 0.5em 1em;
         cursor: pointer;
-        &:hover {
+
+        &:hover,
+        &:focus {
           box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.38);
         }
 
