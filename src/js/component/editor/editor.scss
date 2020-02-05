@@ -5,25 +5,42 @@ div#editor {
   top: 0%;
   left: 0%;
   background-color: #dedede;
-}
 
-textarea {
-  background-color: white;
-  border: none;
-  resize: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
-  line-height: 1.8em;
-  width: 50em;
-  box-sizing: border-box;
-  height: calc(100% - 3em);
-  top: 1.5em;
-  position: relative;
-  max-width: 80%;
-  padding: 1em;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.17);
-  &:focus {
-    outline-color: rgba(255, 0, 0, 0.8);
+  textarea {
+    background-color: white;
+    border: none;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    line-height: 1.8em;
+    width: 50em;
+    box-sizing: border-box;
+    height: calc(100% - 3em);
+    top: 1.5em;
+    position: relative;
+    max-width: 80%;
+    padding: 1em;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.17);
+    &:focus {
+      outline-color: rgba(255, 0, 0, 0.8);
+    }
+    &.error {
+      animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      filter: brightness(0.8);
+      outline-color: transparent;
+    }
+  }
+
+  .alert-warning {
+    color: #721c24;
+    background-color: #f8d7da;
+    position: absolute;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 0.25rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -48,4 +65,24 @@ textarea {
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255, 0, 0, 0.4);
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
