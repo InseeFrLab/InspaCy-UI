@@ -18,7 +18,7 @@ const Buttons = ({
   setEntityList
 }) => {
   const keysFunction = event => {
-    if (event.ctrlKey && event.keyCode === 13) {
+    if ((event.ctrlKey || event.metaKey) && event.keyCode === 13) {
       if (!Object.keys(resultValue).length)
         ButtonFunctions.launchProcess(
           setResultValue,
@@ -31,7 +31,7 @@ const Buttons = ({
           setEntityList
         );
     } else if (
-      event.ctrlKey &&
+      (event.ctrlKey || event.metaKey) &&
       event.keyCode === 188 &&
       !Object.keys(resultValue).length
     ) {
