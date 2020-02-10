@@ -1,8 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./result.scss";
 import ResultFunctions from "./result.functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTimesCircle,
+  faFlag,
+  faSmileBeam,
+  faFrown,
+  faPaperPlane
+} from "@fortawesome/free-solid-svg-icons";
 import { Pie } from "react-chartjs-2";
 
 const Result = ({
@@ -32,16 +38,28 @@ const Result = ({
       ResultFunctions.textRenderer
     );
   };
+  const sendFeedback = ResultFunctions.sendFeedback;
   const escFunction = event => {
-    if (event.keyCode === 27 && Object.keys(resultValue).length) {
-      setResultValue({});
-      setEntityList({});
+    if (event.keyCode === 27) {
+      if (showFeedbackModale) {
+        setShowFeedbackModale(false);
+        setSending(false);
+      } else if (Object.keys(resultValue).length) {
+        setResultValue({});
+        setEntityList({});
+      }
     }
   };
 
+  const [showFeedbackModale, setShowFeedbackModale] = useState(false),
+    [badFeedback, setBadFeedback] = useState(false),
+    [goodFeedback, setGoodFeedback] = useState(false),
+    [sending, setSending] = useState(false),
+    [userName, setUserName] = useState(""),
+    [feedBackText, setFeedBackText] = useState("");
+
   useEffect(() => {
     document.addEventListener("keydown", escFunction, false);
-
     return () => {
       document.removeEventListener("keydown", escFunction, false);
     };
@@ -57,6 +75,11 @@ const Result = ({
         <div id="text-render">
           <h3>Rendu textuel</h3>
           <p dangerouslySetInnerHTML={{ __html: textRender }}></p>
+          {!sending && (
+            <button onClick={() => setShowFeedbackModale(true)}>
+              <FontAwesomeIcon icon={faFlag} size="lg" />
+            </button>
+          )}
         </div>
         <hr />
         <div id="entity-lister">
@@ -162,6 +185,73 @@ const Result = ({
         <button id="leave-button" onClick={() => setResultValue({})}>
           Esc <FontAwesomeIcon icon={faTimesCircle} size="lg" />
         </button>
+      </div>
+      <div id="feedback-section" className={showFeedbackModale ? "shown" : ""}>
+        <div
+          id="feedback-overlay"
+          onClick={() => {
+            setShowFeedbackModale(false);
+            setSending(false);
+          }}
+        ></div>
+        <div id="feedback-modale">
+          <h2>Votre avis compte</h2>
+          <input
+            type="text"
+            value={userName}
+            placeholder="Nom et prénom"
+            onChange={event => setUserName(event.target.value)}
+          />
+          <h4>Comment évaluez-vous ce résultat ?</h4>
+          <div id="modale-btns">
+            <button
+              onClick={() => {
+                setGoodFeedback(true);
+                setBadFeedback(false);
+              }}
+              className={goodFeedback ? "chosen" : ""}
+            >
+              <FontAwesomeIcon icon={faSmileBeam} size="lg" />
+            </button>
+            <button
+              onClick={() => {
+                setBadFeedback(true);
+                setGoodFeedback(false);
+              }}
+              className={badFeedback ? "chosen" : ""}
+            >
+              <FontAwesomeIcon icon={faFrown} size="lg" />
+            </button>
+          </div>
+          {badFeedback && (
+            <textarea
+              placeholder="Votre retour"
+              onChange={event => setFeedBackText(event.target.value)}
+            ></textarea>
+          )}
+          <button
+            onClick={() =>
+              sendFeedback(
+                { goodFeedback, badFeedback, feedBackText, userName },
+                setShowFeedbackModale,
+                setSending
+              )
+            }
+            disabled={
+              !(
+                ((badFeedback && feedBackText !== "") || goodFeedback) &&
+                userName !== ""
+              )
+            }
+          >
+            Envoyer
+            <FontAwesomeIcon
+              icon={faPaperPlane}
+              size="lg"
+              className={sending ? "sending" : ""}
+            />
+          </button>
+        </div>
       </div>
     </section>
   );

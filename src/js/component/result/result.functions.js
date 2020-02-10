@@ -94,6 +94,11 @@ const ResultFunctions = {
         }
       ]
     });
+  },
+  sendFeedback: (data, setShowFeedbackModale, setSending) => {
+    console.log(data);
+    setSending(true);
+    setTimeout(setShowFeedbackModale, 1000, false);
   }
 };
 
