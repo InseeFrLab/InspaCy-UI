@@ -1,0 +1,29 @@
+{
+  "BUTTONS": {
+    "PROCESS_LAUNCH": "Launch the process (ctrl + enter)",
+    "FILE_LOAD": "Load a file (ctrl + ,)"
+  },
+  "EDITOR": {
+    "TEXTAREA": "Write here your text",
+    "ALERT": "No reply from server !"
+  },
+  "MODALE": {
+    "DROP": "Drop here your file to load in editor",
+    "CLICK": "Click to select file, or drag to here"
+  },
+  "RESULT": {
+    "HEADER": "Process' result",
+    "SECTION": [
+      { "HEADER": "Textual render" },
+      {
+        "HEADER": "Found concepts list",
+        "UNFOUND": "None found"
+      },
+      {
+        "HEADER": "Entities proportion",
+        "CONCEPT": "concepts found",
+        "OCCURENCE": "occurence found"
+      }
+    ]
+  }
+}

@@ -5,6 +5,7 @@ import "./buttons.scss";
 import ButtonFunctions from "./buttons.functions";
 
 const Buttons = ({
+  translator,
   setShowModale,
   showModale,
   setResultValue,
@@ -69,11 +70,11 @@ const Buttons = ({
         }
       >
         <FontAwesomeIcon icon={faPlay} size="lg" />
-        <span>Lancer le processus (ctrl + entrée)</span>
+        <span>{translator("BUTTONS.PROCESS_LAUNCH")}</span>
       </button>
       <button onClick={() => setShowModale(true)}>
         <FontAwesomeIcon icon={faFileUpload} size="lg" />
-        <span>Charger un fichier (ctrl + ,)</span>
+        <span>{translator("BUTTONS.FILE_LOAD")}</span>
       </button>
     </div>
   );

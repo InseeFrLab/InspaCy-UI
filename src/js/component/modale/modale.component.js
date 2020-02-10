@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import "./modale.scss";
 import { useDropzone } from "react-dropzone";
 
-const Modale = ({ showModale, setShowModale, /*textValue,*/ setText }) => {
+const Modale = ({ translator, showModale, setShowModale, setText }) => {
   const onDrop = useCallback(
     acceptedFiles => {
       let tab = acceptedFiles[0].name.split("."),
@@ -29,9 +29,9 @@ const Modale = ({ showModale, setShowModale, /*textValue,*/ setText }) => {
               {...getInputProps({ multiple: false, accept: "text/plain" })}
             />
             {isDragActive ? (
-              <p>Drop here your file to load in editor</p>
+              <p>{translator("MODALE.DROP")}</p>
             ) : (
-              <p className="clickable">Click to select file, or drag to here</p>
+              <p className="clickable">{translator("MODALE.DROP")}</p>
             )}
           </div>
         </div>

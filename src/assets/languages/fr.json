@@ -1,0 +1,29 @@
+{
+  "BUTTONS": {
+    "PROCESS_LAUNCH": "Lancer le processus (ctrl + entrée)",
+    "FILE_LOAD": "Charger un fichier (ctrl + ,)"
+  },
+  "EDITOR": {
+    "TEXTAREA": "Ecrire ici votre texte",
+    "ALERT": "Aucune réponse du serveur !"
+  },
+  "MODALE": {
+    "DROP": "Déposez votre fichier ici",
+    "CLICK": "Cliquez pour sélectionner le fichier, ou glissez-le ici"
+  },
+  "RESULT": {
+    "HEADER": "Résultat du processus",
+    "SECTION": [
+      { "HEADER": "Rendu textuel" },
+      {
+        "HEADER": "Liste des concepts rencontrés",
+        "UNFOUND": "Aucune entité trouvée"
+      },
+      {
+        "HEADER": "Proportion des entités",
+        "CONCEPT": "concepts ont été trouvé",
+        "OCCURENCE": "occurences ont été trouvé"
+      }
+    ]
+  }
+}
