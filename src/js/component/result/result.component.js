@@ -224,24 +224,28 @@ const Result = ({
               onChange={event => setFeedBackText(event.target.value)}
             ></textarea>
           )}
-          {(badFeedback || goodFeedback) && userName !== "" && (
-            <button
-              onClick={() =>
-                sendFeedback(
-                  { goodFeedback, badFeedback, feedBackText, userName },
-                  setShowFeedbackModale,
-                  setSending
-                )
-              }
-            >
-              Envoyer
-              <FontAwesomeIcon
-                icon={faPaperPlane}
-                size="lg"
-                className={sending ? "sending" : ""}
-              />
-            </button>
-          )}
+          <button
+            onClick={() =>
+              sendFeedback(
+                { goodFeedback, badFeedback, feedBackText, userName },
+                setShowFeedbackModale,
+                setSending
+              )
+            }
+            disabled={
+              !(
+                ((badFeedback && feedBackText !== "") || goodFeedback) &&
+                userName !== ""
+              )
+            }
+          >
+            Envoyer
+            <FontAwesomeIcon
+              icon={faPaperPlane}
+              size="lg"
+              className={sending ? "sending" : ""}
+            />
+          </button>
         </div>
       </div>
     </section>
