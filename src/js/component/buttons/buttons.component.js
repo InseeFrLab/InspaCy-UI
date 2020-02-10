@@ -15,7 +15,8 @@ const Buttons = ({
   selectedEntities,
   textRender,
   setTextRender,
-  setEntityList
+  setEntityList,
+  setServerError
 }) => {
   const keysFunction = event => {
     if ((event.ctrlKey || event.metaKey) && event.keyCode === 13) {
@@ -28,7 +29,8 @@ const Buttons = ({
           selectedEntities,
           textRender,
           setTextRender,
-          setEntityList
+          setEntityList,
+          setServerError
         );
     } else if (
       (event.ctrlKey || event.metaKey) &&
@@ -61,7 +63,8 @@ const Buttons = ({
             selectedEntities,
             textRender,
             setTextRender,
-            setEntityList
+            setEntityList,
+            setServerError
           )
         }
       >

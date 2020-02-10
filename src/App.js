@@ -9,11 +9,16 @@ function App() {
     [textRender, setTextRender] = useState(""),
     [entityList, setEntityList] = useState({}),
     [selectedEntities, setSelectedEntities] = useState([]),
-    [graphData, setGraphData] = useState([]);
+    [graphData, setGraphData] = useState([]),
+    [serverError, setServerError] = useState(false);
 
   return (
     <section className="App">
-      <Editor textValue={textValue} setTextValue={setTextValue} />
+      <Editor
+        textValue={textValue}
+        setTextValue={setTextValue}
+        serverError={serverError}
+      />
       <Modale
         textValue={textValue}
         setText={setTextValue}
@@ -32,6 +37,7 @@ function App() {
         textRender={textRender}
         setTextRender={setTextRender}
         setEntityList={setEntityList}
+        setServerError={setServerError}
       />
       <Result
         graphData={graphData}

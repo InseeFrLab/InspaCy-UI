@@ -9,7 +9,8 @@ const ButtonFunctions = {
     selectedEntities,
     textRender,
     setTextRender,
-    setEntityList
+    setEntityList,
+    setServerError
   ) => {
     const url = window._env_.API_URL || process.env.REACT_APP_API_URL;
     if (!url) {
@@ -17,32 +18,38 @@ const ButtonFunctions = {
         "Needing REACT_APP_API_URL for knowing which is API's endpoint"
       );
     }
-    let response = await fetch(url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        text: textValue
-      })
-    });
-    const newResultValue = await response.json();
-    setResultValue(newResultValue);
-    const { newEntityList } = ResultFunctions.loadTextAndEntity(
-      newResultValue,
-      selectedEntities,
-      textRender,
-      entityList,
-      setTextRender,
-      setEntityList,
-      ResultFunctions.textRenderer
-    );
-    if (
-      Object.keys(newResultValue).includes("ents") &&
-      newResultValue.ents.length
-    ) {
-      ResultFunctions.loadGraphData(newEntityList, setGraphData);
+    try {
+      let response = await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          text: textValue
+        })
+      });
+      const newResultValue = response.json();
+      setResultValue(newResultValue);
+      const { newEntityList } = ResultFunctions.loadTextAndEntity(
+        newResultValue,
+        selectedEntities,
+        textRender,
+        entityList,
+        setTextRender,
+        setEntityList,
+        ResultFunctions.textRenderer
+      );
+      if (
+        Object.keys(newResultValue).includes("ents") &&
+        newResultValue.ents.length
+      ) {
+        ResultFunctions.loadGraphData(newEntityList, setGraphData);
+      }
+    } catch {
+      setServerError(true);
+      console.error("The server didn't answer");
+      setTimeout(() => setServerError(false), 1000);
     }
   },
 
