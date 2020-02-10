@@ -12,7 +12,7 @@ const Editor = ({ textValue, setTextValue, serverError }) => {
         className={serverError ? "error" : ""}
       ></textarea>
       {serverError && (
-        <div className="alert-warning">Server doesn't answer !</div>
+        <div className="alert-warning">No reply from server !</div>
       )}
     </div>
   );
