@@ -40,9 +40,14 @@ const Result = ({
   };
   const sendFeedback = ResultFunctions.sendFeedback;
   const escFunction = event => {
-    if (event.keyCode === 27 && Object.keys(resultValue).length) {
-      setResultValue({});
-      setEntityList({});
+    if (event.keyCode === 27) {
+      if (showFeedbackModale) {
+        setShowFeedbackModale(false);
+        setSending(false);
+      } else if (Object.keys(resultValue).length) {
+        setResultValue({});
+        setEntityList({});
+      }
     }
   };
 
