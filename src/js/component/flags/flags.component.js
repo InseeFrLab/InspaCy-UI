@@ -3,7 +3,6 @@ import "./flags.scss";
 import LanguagesFiles from "../../../assets/languages";
 
 const Flags = ({ actualLanguage }) => {
-  console.log(actualLanguage);
   var choices = (
     <div>
       {Object.keys(LanguagesFiles)
