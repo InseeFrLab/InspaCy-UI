@@ -1,20 +1,12 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import fr_translation from "../../assets/languages/fr.json";
-import en_translation from "../../assets/languages/en.json";
+import LanguagesFiles from "../../assets/languages";
 
 i18n.use(initReactI18next).init({
-  resources: {
-    fr: {
-      translation: fr_translation
-    },
-    en: {
-      translation: en_translation
-    }
-  },
+  resources: LanguagesFiles,
   fallbackLng: "en",
-  lng: "fr",
-  debug: true,
+  lng: process.env.REACT_APP_DEFAULT_LANGUAGE || "fr",
+  debug: false,
   keySeparator: ".",
   interpolation: {
     escapeValue: false

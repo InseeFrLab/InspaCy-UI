@@ -12,8 +12,11 @@ function App() {
     [selectedEntities, setSelectedEntities] = useState([]),
     [graphData, setGraphData] = useState([]),
     [serverError, setServerError] = useState(false),
-    [translator] = useTranslation();
+    [translator, i18n] = useTranslation(),
+    pageParams = new URL(document.location.href).searchParams;
 
+  if (pageParams.get("lang"))
+    i18n.changeLanguage(pageParams.get("lang").toLowerCase());
   return (
     <section className="App">
       <Editor

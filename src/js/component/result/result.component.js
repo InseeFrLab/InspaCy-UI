@@ -133,9 +133,11 @@ const Result = ({
                     <table>
                       <thead>
                         <tr>
-                          <th>Rang</th>
-                          <th>Label</th>
-                          <th>Apparitions</th>
+                          <th>{translator("RESULT.SECTION.3.RANK_LABEL")}</th>
+                          <th>{translator("RESULT.SECTION.3.LABEL_LABEL")}</th>
+                          <th>
+                            {translator("RESULT.SECTION.3.APPEARS_LABEL")}
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -155,7 +157,7 @@ const Result = ({
                   )}
                 </div>
                 <div>
-                  <h3>Visualisation</h3>
+                  <h3>{translator("RESULT.SECTION.4.HEADER")}</h3>
                   {(graphData.length || Object.keys(graphData).length) && (
                     <Pie
                       data={graphData}
@@ -196,14 +198,14 @@ const Result = ({
           }}
         ></div>
         <div id="feedback-modale">
-          <h2>Votre avis compte</h2>
+          <h2>{translator("RESULT.MODALE.HEADER")}</h2>
           <input
             type="text"
             value={userName}
-            placeholder="Nom et prénom"
+            placeholder={translator("RESULT.MODALE.NAME_INPUT_PLACEHOLDER")}
             onChange={event => setUserName(event.target.value)}
           />
-          <h4>Comment évaluez-vous ce résultat ?</h4>
+          <h4>{translator("RESULT.MODALE.QUESTION")}</h4>
           <div id="modale-btns">
             <button
               onClick={() => {
@@ -226,7 +228,7 @@ const Result = ({
           </div>
           {badFeedback && (
             <textarea
-              placeholder="Votre retour"
+              placeholder={translator("RESULT.MODALE.TEXTAREA_PLACEHOLDER")}
               onChange={event => setFeedBackText(event.target.value)}
             ></textarea>
           )}
@@ -245,7 +247,7 @@ const Result = ({
               )
             }
           >
-            Envoyer
+            {translator("RESULT.MODALE.SEND")}
             <FontAwesomeIcon
               icon={faPaperPlane}
               size="lg"
