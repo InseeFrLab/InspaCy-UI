@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Editor, Modale, Buttons, Result } from "./js/component";
+import { Editor, Modale, Buttons, Result, Flags } from "./js/component";
 import "./App.css";
 import { useTranslation } from "react-i18next";
 
@@ -47,6 +47,7 @@ function App() {
         setEntityList={setEntityList}
         setServerError={setServerError}
       />
+      <Flags actualLanguage={i18n.language} />
       <Result
         translator={translator}
         graphData={graphData}
