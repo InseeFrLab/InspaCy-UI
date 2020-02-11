@@ -1,18 +1,18 @@
 import React from "react";
 import "./editor.scss";
 
-const Editor = ({ textValue, setTextValue, serverError }) => {
+const Editor = ({ translator, textValue, setTextValue, serverError }) => {
   return (
     <div id="editor">
       <textarea
-        placeholder="Ecrire ici votre texte"
+        placeholder={translator("EDITOR.TEXTAREA")}
         name="text"
         value={textValue}
         onChange={e => setTextValue(e.target.value)}
         className={serverError ? "error" : ""}
       ></textarea>
       {serverError && (
-        <div className="alert-warning">No reply from server !</div>
+        <div className="alert-warning">{translator("EDITOR.ALERT")}</div>
       )}
     </div>
   );

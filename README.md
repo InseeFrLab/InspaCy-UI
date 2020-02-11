@@ -66,3 +66,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## I18N
+
+In this project, i18n is implemented, with the whole necessary configuration.
+
+Below the most important things to know for using/editing it, are listed :
+
+- There is a module for configurating and exporting the i18n module, located in i18n.js [here](./src/js/tools/i18n.js).
+- A folder contains all the folders containing languages' dictionnary in a JSON file, located [here](./src/assets/languages).
+- The pictures for these languages are located in the [public media folder](./public/media), whose name is the language's label.

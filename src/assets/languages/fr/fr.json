@@ -1,0 +1,44 @@
+{
+  "BUTTONS": {
+    "PROCESS_LAUNCH": "Lancer le processus (ctrl + ↵)",
+    "FILE_LOAD": "Charger un fichier (ctrl + ,)"
+  },
+  "EDITOR": {
+    "TEXTAREA": "Ecrire ici votre texte",
+    "ALERT": "Aucune réponse du serveur !"
+  },
+  "MODALE": {
+    "DROP": "Déposez votre fichier ici",
+    "CLICK": "Cliquez pour sélectionner le fichier, ou glissez-le ici"
+  },
+  "RESULT": {
+    "HEADER": "Résultat du processus",
+    "SECTION": [
+      { "HEADER": "Rendu textuel" },
+      {
+        "HEADER": "Liste des concepts rencontrés",
+        "UNFOUND": "Aucune entité trouvée"
+      },
+      {
+        "HEADER": "Proportion des entités",
+        "CONCEPT": "concepts ont été trouvé",
+        "OCCURENCE": "occurences ont été trouvé"
+      },
+      {
+        "RANK_LABEL": "Rang",
+        "LABEL_LABEL": "Label",
+        "APPEARS_LABEL": "Apparitions"
+      },
+      {
+        "HEADER": "Visualisation"
+      }
+    ],
+    "MODALE": {
+      "HEADER": "Votre avis compte",
+      "QUESTION": "Comment évaluez-vous ce résultat ?",
+      "NAME_INPUT_PLACEHOLDER": "Nom et prénom",
+      "TEXTAREA_PLACEHOLDER": "Détaillez votre retour",
+      "SEND": "Envoyer"
+    }
+  }
+}

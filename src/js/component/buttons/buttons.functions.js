@@ -29,7 +29,7 @@ const ButtonFunctions = {
           text: textValue
         })
       });
-      const newResultValue = response.json();
+      const newResultValue = await response.json();
       setResultValue(newResultValue);
       const { newEntityList } = ResultFunctions.loadTextAndEntity(
         newResultValue,

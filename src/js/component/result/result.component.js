@@ -12,6 +12,7 @@ import {
 import { Pie } from "react-chartjs-2";
 
 const Result = ({
+  translator,
   graphData,
   resultValue,
   textRender,
@@ -71,9 +72,9 @@ const Result = ({
       className={Object.keys(resultValue).length ? "show" : ""}
     >
       <div>
-        <h1>Résultat du processus</h1>
+        <h1>{translator("RESULT.HEADER")}</h1>
         <div id="text-render">
-          <h3>Rendu textuel</h3>
+          <h3>{translator("RESULT.SECTION.0.HEADER")}</h3>
           <p dangerouslySetInnerHTML={{ __html: textRender }}></p>
           {!sending && (
             <button onClick={() => setShowFeedbackModale(true)}>
@@ -83,12 +84,12 @@ const Result = ({
         </div>
         <hr />
         <div id="entity-lister">
-          <h3>Liste des concepts rencontrés</h3>
+          <h3>{translator("RESULT.SECTION.1.HEADER")}</h3>
           <div>
             {!Object.keys(resultValue).includes("ents") ||
             !resultValue.ents.length ? (
               <p style={{ fontStyle: "italic", color: "#C5C5C5" }}>
-                Aucune entité trouvée
+                {translator("RESULT.SECTION.1.UNFOUND")}
               </p>
             ) : (
               Object.values(entityList).map((elem, index) => {
@@ -109,19 +110,19 @@ const Result = ({
         </div>
         <hr />
         <div id="entity-proportion">
-          <h3>Proportion des entités</h3>
+          <h3>{translator("RESULT.SECTION.2.HEADER")}</h3>
           <div className="row">
             <p className="half">
               <span id="nb-entity">{Object.keys(entityList).length || 0}</span>
               <br />
-              concepts ont été trouvé
+              {translator("RESULT.SECTION.2.CONCEPT")}
             </p>
             <p className="half">
               <span id="nb-entity">
                 {resultValue.ents ? Object.keys(resultValue.ents).length : 0}
               </span>
               <br />
-              occurences ont été trouvé
+              {translator("RESULT.SECTION.2.OCCURENCE")}
             </p>
           </div>
           {Object.keys(resultValue).includes("ents") &&
@@ -132,9 +133,11 @@ const Result = ({
                     <table>
                       <thead>
                         <tr>
-                          <th>Rang</th>
-                          <th>Label</th>
-                          <th>Apparitions</th>
+                          <th>{translator("RESULT.SECTION.3.RANK_LABEL")}</th>
+                          <th>{translator("RESULT.SECTION.3.LABEL_LABEL")}</th>
+                          <th>
+                            {translator("RESULT.SECTION.3.APPEARS_LABEL")}
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -154,7 +157,7 @@ const Result = ({
                   )}
                 </div>
                 <div>
-                  <h3>Visualisation</h3>
+                  <h3>{translator("RESULT.SECTION.4.HEADER")}</h3>
                   {(graphData.length || Object.keys(graphData).length) && (
                     <Pie
                       data={graphData}
@@ -195,14 +198,14 @@ const Result = ({
           }}
         ></div>
         <div id="feedback-modale">
-          <h2>Votre avis compte</h2>
+          <h2>{translator("RESULT.MODALE.HEADER")}</h2>
           <input
             type="text"
             value={userName}
-            placeholder="Nom et prénom"
+            placeholder={translator("RESULT.MODALE.NAME_INPUT_PLACEHOLDER")}
             onChange={event => setUserName(event.target.value)}
           />
-          <h4>Comment évaluez-vous ce résultat ?</h4>
+          <h4>{translator("RESULT.MODALE.QUESTION")}</h4>
           <div id="modale-btns">
             <button
               onClick={() => {
@@ -225,7 +228,7 @@ const Result = ({
           </div>
           {badFeedback && (
             <textarea
-              placeholder="Votre retour"
+              placeholder={translator("RESULT.MODALE.TEXTAREA_PLACEHOLDER")}
               onChange={event => setFeedBackText(event.target.value)}
             ></textarea>
           )}
@@ -244,7 +247,7 @@ const Result = ({
               )
             }
           >
-            Envoyer
+            {translator("RESULT.MODALE.SEND")}
             <FontAwesomeIcon
               icon={faPaperPlane}
               size="lg"
