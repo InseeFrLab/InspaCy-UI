@@ -15,7 +15,7 @@ function App() {
     [translator, i18n] = useTranslation(),
     pageParams = new URL(document.location.href).searchParams;
 
-  if (pageParams.get("lang"))
+  if (pageParams.get("lang") && pageParams.get("lang") !== i18n.language)
     i18n.changeLanguage(pageParams.get("lang").toLowerCase());
   return (
     <section className="App">
