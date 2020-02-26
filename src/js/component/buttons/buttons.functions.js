@@ -46,9 +46,10 @@ const ButtonFunctions = {
       ) {
         ResultFunctions.loadGraphData(newEntityList, setGraphData);
       }
-    } catch {
+    } catch (err) {
       setServerError(true);
       console.error("The server didn't answer");
+      console.error(err);
       setTimeout(() => setServerError(false), 1000);
     }
   },
