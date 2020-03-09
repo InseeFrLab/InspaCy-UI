@@ -12,6 +12,7 @@ const Flags = ({ actualLanguage }) => {
             <img
               src={`media/${label}.jpg`}
               alt={label}
+              key={label}
               onClick={() => (document.location.href = `?lang=${label}`)}
             />
           );
