@@ -10,10 +10,12 @@ const ResultFunctions = {
         entityValue = resultValue.text.substr(e.start, e.end - e.start);
       textRender.push({
         type: "span",
+        id: entityId,
         content: resultValue.text.substr(tmp_index, e.start - tmp_index)
       })
       textRender.push({
         type: "a",
+        id: entityId,
         content: entityValue,
         link: e.link,
         focus: selectedEntity.indexOf(entityId) > -1
