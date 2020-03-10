@@ -7,7 +7,8 @@ import {
   faFlag,
   faSmileBeam,
   faFrown,
-  faPaperPlane
+  faPaperPlane,
+  faShare
 } from "@fortawesome/free-solid-svg-icons";
 import { Pie } from "react-chartjs-2";
 
@@ -106,6 +107,12 @@ const Result = ({
                 );
               })
             )}
+          </div>
+          <div id="share-button">
+            <button disabled={!selectedEntities.length}>
+              <FontAwesomeIcon icon={faShare} size="lg" />{" "}
+              {translator("RESULT.SECTION.1.EXPORT_BUTTON_TITLE")}
+            </button>
           </div>
         </div>
         <hr />
