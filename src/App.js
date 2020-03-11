@@ -7,7 +7,7 @@ function App() {
   const [showModale, setShowModale] = useState(false),
     [textValue, setTextValue] = useState(""),
     [resultValue, setResultValue] = useState({}),
-    [textRender, setTextRender] = useState(""),
+    [textRender, setTextRender] = useState([]),
     [entityList, setEntityList] = useState({}),
     [selectedEntities, setSelectedEntities] = useState([]),
     [graphData, setGraphData] = useState([]),
