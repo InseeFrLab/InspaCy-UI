@@ -10,30 +10,16 @@ const ResultFunctions = {
         entityValue = resultValue.text.substr(e.start, e.end - e.start);
       textRender.push({
         type: "span",
-        id: entityId,
         content: resultValue.text.substr(tmp_index, e.start - tmp_index)
       })
       textRender.push({
         type: "a",
         id: entityId,
+        entityLabel: e.entity || entityId,
         content: entityValue,
         link: e.link,
         focus: selectedEntity.indexOf(entityId) > -1
       })
-      // textRender +=
-      //   "<span>" +
-      //   resultValue.text.substr(tmp_index, e.start - tmp_index) +
-      //   "</span><a class='" +
-      //   entityId +
-      //   (selectedEntity.indexOf(entityId) > -1 ? " focus" : "") +
-      //   "' href='" +
-      //   e.link +
-      //   "' key='" +
-      //   Date() +
-      //   "' target='_blank'>" +
-      //   entityValue +
-      //   '<i class="fas fa-external-link-alt"></i>' +
-      //   "</a>";
       tmp_index = e.end;
       if (!entityList[entityId])
         entityList[entityId] = {
@@ -51,7 +37,6 @@ const ResultFunctions = {
           nb: entityList[entityId].nb + 1
         };
     });
-    // textRender += "<span>" + resultValue.text.substr(tmp_index) + "</span>";
     textRender.push({
       type: "span",
       content: resultValue.text.substr(tmp_index)

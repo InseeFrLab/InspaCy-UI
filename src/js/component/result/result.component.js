@@ -91,7 +91,8 @@ const Result = ({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {elem.content}
+                    <div className="tooltip">{elem.entityLabel}</div>
+                    <span>{elem.content}</span>
                     <FontAwesomeIcon icon={faExternalLinkAlt} size="lg" />
                   </a>
                 );
