@@ -43,13 +43,13 @@
       transition: 0.3s linear;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.38);
       &:hover {
-        transform: scale(1.1);
         box-shadow: none;
       }
     }
     #text-render {
       position: relative;
       p {
+        font-family: "Montserrat", sans-serif;
         line-height: 2em;
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.18);
         background-color: white;
@@ -57,20 +57,51 @@
         margin: auto;
         margin-bottom: 1em;
         text-align: justify;
-      }
-      a {
-        background-color: #c3c3c3;
-        text-decoration: none;
-        cursor: pointer;
-        color: white;
-        padding: 0.2em 0.5em;
-        margin: 0 0.2em;
-        transition: 0.3s ease-in-out;
-        &:hover {
-          background-color: grey;
-        }
-        &.focus {
-          background-color: red;
+        position: relative;
+        a {
+          background-color: #c3c3c3;
+          text-decoration: none;
+          cursor: pointer;
+          color: white;
+          padding: 0.3em 0.5em;
+          margin: 0 0.2em;
+          transition: 0.3s ease-in-out;
+          position: relative;
+          > svg {
+            margin-left: 0.3em;
+            height: 0.7em;
+            vertical-align: text-bottom;
+          }
+          > .tooltip {
+            display: none;
+            position: absolute;
+            top: -4em;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(58, 58, 58);
+            padding: 0.5em 2em;
+            width: max-content;
+            &:after {
+              content: " ";
+              background-color: #3a3a3a;
+              position: absolute;
+              height: 1em;
+              width: 1em;
+              bottom: -0.5em;
+              left: 50%;
+              transform: translateX(-50%) rotate(45deg);
+              z-index: 1;
+            }
+          }
+          &:hover {
+            background-color: grey;
+            > .tooltip {
+              display: block;
+            }
+          }
+          &.focus {
+            background-color: red;
+          }
         }
       }
       button {
@@ -198,8 +229,10 @@
     transition: 0.3s ease-in-out;
     opacity: 0;
     box-sizing: border-box;
+    display: none;
 
     &.shown {
+      display: block;
       position: fixed;
       z-index: 1000;
       opacity: 1;
