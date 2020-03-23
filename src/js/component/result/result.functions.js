@@ -25,6 +25,8 @@ const ResultFunctions = {
         entityList[entityId] = {
           id: entityId,
           value: resultValue.text.substr(e.start, e.end - e.start),
+          definition: e.defintion,
+          shortDefinition: e.shortDefinition,
           nb: 1
         };
       else
@@ -99,6 +101,13 @@ const ResultFunctions = {
     console.log(data);
     setSending(true);
     setTimeout(setShowFeedbackModale, 1000, false);
+  },
+  exportEntities: (selectedEntities, entityList) => {
+    let result = [];
+    Object.values(entityList).forEach(elem => {
+      if (selectedEntities.includes(elem.id)) result.push({ ...elem });
+    });
+    console.log("Result to export:", result);
   }
 };
 
