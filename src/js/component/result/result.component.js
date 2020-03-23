@@ -8,7 +8,8 @@ import {
   faSmileBeam,
   faFrown,
   faPaperPlane,
-  faShare
+  faShare,
+  faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { Pie } from "react-chartjs-2";
 
@@ -77,7 +78,28 @@ const Result = ({
         <h1>{translator("RESULT.HEADER")}</h1>
         <div id="text-render">
           <h3>{translator("RESULT.SECTION.0.HEADER")}</h3>
-          <p dangerouslySetInnerHTML={{ __html: textRender }}></p>
+          <p>
+            {textRender.map(elem => {
+              if (elem.type === "span") return <span>{elem.content}</span>;
+              else
+                return (
+                  <a
+                    href={elem.link}
+                    className={
+                      elem.id + selectedEntities.indexOf(elem.id) > -1
+                        ? " focus"
+                        : ""
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="tooltip">{elem.entityLabel}</div>
+                    <span>{elem.content}</span>
+                    <FontAwesomeIcon icon={faExternalLinkAlt} size="lg" />
+                  </a>
+                );
+            })}
+          </p>
           {!sending && (
             <button onClick={() => setShowFeedbackModale(true)}>
               <FontAwesomeIcon icon={faFlag} size="lg" />

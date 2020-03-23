@@ -1,25 +1,25 @@
 const ResultFunctions = {
   textRenderer: (resultValue, selectedEntity) => {
     let tmp_index = 0,
-      textRender = "",
+      textRender = [],
       entityList = {};
 
     if (!Object.keys(resultValue).length) return {};
     resultValue.ents.forEach(e => {
       let entityId = e.link.substr(44),
         entityValue = resultValue.text.substr(e.start, e.end - e.start);
-      textRender +=
-        resultValue.text.substr(tmp_index, e.start - tmp_index) +
-        "<a class='" +
-        entityId +
-        (selectedEntity.indexOf(entityId) > -1 ? " focus" : "") +
-        "' href='" +
-        e.link +
-        "' key='" +
-        Date() +
-        "' target='_blank'>" +
-        entityValue +
-        "</a>";
+      textRender.push({
+        type: "span",
+        content: resultValue.text.substr(tmp_index, e.start - tmp_index)
+      })
+      textRender.push({
+        type: "a",
+        id: entityId,
+        entityLabel: e.entity || entityId,
+        content: entityValue,
+        link: e.link,
+        focus: selectedEntity.indexOf(entityId) > -1
+      })
       tmp_index = e.end;
       if (!entityList[entityId])
         entityList[entityId] = {
@@ -39,7 +39,11 @@ const ResultFunctions = {
           nb: entityList[entityId].nb + 1
         };
     });
-    textRender += resultValue.text.substr(tmp_index);
+    textRender.push({
+      type: "span",
+      content: resultValue.text.substr(tmp_index)
+    })
+    console.log(textRender);
     return { newTextRender: textRender, newEntityList: entityList };
   },
   loadTextAndEntity: (
