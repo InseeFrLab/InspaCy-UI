@@ -5,21 +5,21 @@ const ResultFunctions = {
       entityList = {};
 
     if (!Object.keys(resultValue).length) return {};
-    resultValue.ents.forEach(e => {
+    resultValue.ents.forEach((e) => {
       let entityId = e.link.substr(44),
         entityValue = resultValue.text.substr(e.start, e.end - e.start);
       textRender.push({
         type: "span",
-        content: resultValue.text.substr(tmp_index, e.start - tmp_index)
-      })
+        content: resultValue.text.substr(tmp_index, e.start - tmp_index),
+      });
       textRender.push({
         type: "a",
         id: entityId,
         entityLabel: e.entity || entityId,
         content: entityValue,
         link: e.link,
-        focus: selectedEntity.indexOf(entityId) > -1
-      })
+        focus: selectedEntity.indexOf(entityId) > -1,
+      });
       tmp_index = e.end;
       if (!entityList[entityId])
         entityList[entityId] = {
@@ -27,7 +27,7 @@ const ResultFunctions = {
           value: resultValue.text.substr(e.start, e.end - e.start),
           definition: e.defintion,
           shortDefinition: e.shortDefinition,
-          nb: 1
+          nb: 1,
         };
       else
         entityList[entityId] = {
@@ -36,13 +36,13 @@ const ResultFunctions = {
             entityValue.length > entityList[entityId].value.length
               ? entityList[entityId].value
               : entityValue,
-          nb: entityList[entityId].nb + 1
+          nb: entityList[entityId].nb + 1,
         };
     });
     textRender.push({
       type: "span",
-      content: resultValue.text.substr(tmp_index)
-    })
+      content: resultValue.text.substr(tmp_index),
+    });
     console.log(textRender);
     return { newTextRender: textRender, newEntityList: entityList };
   },
@@ -69,24 +69,24 @@ const ResultFunctions = {
       setSelectedEntities([...selectedEntities, entityId]);
       return [...selectedEntities, entityId];
     } else {
-      setSelectedEntities(selectedEntities.filter(elem => elem !== entityId));
-      return selectedEntities.filter(elem => elem !== entityId);
+      setSelectedEntities(selectedEntities.filter((elem) => elem !== entityId));
+      return selectedEntities.filter((elem) => elem !== entityId);
     }
   },
   loadGraphData: (entityList, setGraphData) => {
     let datas = Object.values(entityList).sort((a, b) => b.nb - a.nb);
     setGraphData({
-      labels: [...datas.map(a => a.value)],
+      labels: [...datas.map((a) => a.value)],
       datasets: [
         {
-          data: [...datas.map(a => a.nb)],
+          data: [...datas.map((a) => a.nb)],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
             "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)"
+            "rgba(255, 159, 64, 0.2)",
           ],
           borderColor: [
             "rgba(255, 99, 132, 1)",
@@ -94,11 +94,11 @@ const ResultFunctions = {
             "rgba(255, 206, 86, 1)",
             "rgba(75, 192, 192, 1)",
             "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)"
+            "rgba(255, 159, 64, 1)",
           ],
-          borderWidth: 1
-        }
-      ]
+          borderWidth: 1,
+        },
+      ],
     });
   },
   sendFeedback: (data, setShowFeedbackModale, setSending) => {
@@ -107,12 +107,24 @@ const ResultFunctions = {
     setTimeout(setShowFeedbackModale, 1000, false);
   },
   exportEntities: (selectedEntities, entityList) => {
-    let result = [];
-    Object.values(entityList).forEach(elem => {
+    let result = [],
+      xhr = new XMLHttpRequest(),
+      url = window._env_.EXPORT_URL || process.env.REACT_APP_EXPORT_URL;
+    if (!url) {
+      throw new Error(
+        "Needing REACT_APP_EXPORT_URL for knowing which is Export API's endpoint"
+      );
+    }
+    Object.values(entityList).forEach((elem) => {
       if (selectedEntities.includes(elem.id)) result.push({ ...elem });
     });
-    console.log("Result to export:", result);
-  }
+    try {
+      xhr.open("POST", url);
+      xhr.send(JSON.stringify(result));
+    } catch (err) {
+      console.error("The server didn't answer", err);
+    }
+  },
 };
 
 export default ResultFunctions;
