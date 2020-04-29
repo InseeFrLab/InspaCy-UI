@@ -107,23 +107,19 @@ const ResultFunctions = {
     setTimeout(setShowFeedbackModale, 1000, false);
   },
   exportEntities: (selectedEntities, entityList) => {
-    let result = [],
-      xhr = new XMLHttpRequest(),
-      url = window._env_.EXPORT_URL || process.env.REACT_APP_EXPORT_URL;
-    if (!url) {
-      throw new Error(
-        "Needing REACT_APP_EXPORT_URL for knowing which is Export API's endpoint"
-      );
-    }
+    let result = [];
     Object.values(entityList).forEach((elem) => {
       if (selectedEntities.includes(elem.id)) result.push({ ...elem });
     });
-    try {
-      xhr.open("POST", url);
-      xhr.send(JSON.stringify(result));
-    } catch (err) {
-      console.error("The server didn't answer", err);
-    }
+    let fileName = "entities.json",
+      json = JSON.stringify(result),
+      blob = new Blob([json], { type: "application/json" }),
+      link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   },
 };
 
