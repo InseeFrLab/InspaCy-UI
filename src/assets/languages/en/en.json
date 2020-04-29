@@ -17,7 +17,8 @@
       { "HEADER": "Textual render" },
       {
         "HEADER": "Found concepts list",
-        "UNFOUND": "None found"
+        "UNFOUND": "None found",
+        "EXPORT_BUTTON_TITLE": "Export selected entities"
       },
       {
         "HEADER": "Entities proportion",

@@ -8,6 +8,7 @@ import {
   faSmileBeam,
   faFrown,
   faPaperPlane,
+  faShare,
   faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { Pie } from "react-chartjs-2";
@@ -41,6 +42,7 @@ const Result = ({
     );
   };
   const sendFeedback = ResultFunctions.sendFeedback;
+  const exportEntities = ResultFunctions.exportEntities;
   const escFunction = event => {
     if (event.keyCode === 27) {
       if (showFeedbackModale) {
@@ -128,6 +130,15 @@ const Result = ({
                 );
               })
             )}
+          </div>
+          <div id="share-button">
+            <button
+              disabled={!selectedEntities.length}
+              onClick={() => exportEntities(selectedEntities, entityList)}
+            >
+              <FontAwesomeIcon icon={faShare} size="lg" />{" "}
+              {translator("RESULT.SECTION.1.EXPORT_BUTTON_TITLE")}
+            </button>
           </div>
         </div>
         <hr />

@@ -17,7 +17,8 @@
       { "HEADER": "Rendu textuel" },
       {
         "HEADER": "Liste des concepts rencontrés",
-        "UNFOUND": "Aucune entité trouvée"
+        "UNFOUND": "Aucune entité trouvée",
+        "EXPORT_BUTTON_TITLE": "Exporter les entités sélectionnées"
       },
       {
         "HEADER": "Proportion des entités",

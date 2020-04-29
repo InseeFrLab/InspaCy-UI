@@ -122,7 +122,7 @@
       }
     }
     #entity-lister {
-      > div {
+      > div:nth-child(2) {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
@@ -143,6 +143,24 @@
             transform: scale(1.1);
             box-shadow: none;
             // background-color: rgb(205, 0, 0);
+          }
+        }
+      }
+      #share-button {
+        text-align: right;
+
+        > button {
+          background-color: white;
+          border: none;
+          padding: 0.5em 1em;
+          outline-color: red;
+          cursor: pointer;
+          &:disabled {
+            opacity: 0.4;
+            cursor: initial;
+          }
+          &:enabled:hover {
+            color: red;
           }
         }
       }
