@@ -1,10 +1,21 @@
-# Quick Start
+# Inspacy-UI
 
-## Install Dependencies
+Inspacy-UI is the client for the usage of the Inspacy API, whose goal is to parse a text for locating notions depending on words database.
+More information about this open-source API  [here](https://github.com/InseeFrLab/InspaCy) .
+
+## Quick Start
+
+### From Docker
+
+	docker run -p 3000:3000 inseefrlab/inspacy-ui
+
+### From Source
+
+#### Install Dependencies
 
     npm install
 
-## Set up environment
+#### Set up environment
 
 In the project's root, create a file `.env.local`, and copy in this file the content of the file `.env`.
 Then, put the values you need after the caracters `=`.
@@ -16,7 +27,7 @@ Here is the list of description of each environment's variables :
 | REACT_APP_API_URL | URL of the API which willbe called for process | https://localhost:5000
 | REACT_APP_DEFAULT_LANGUAGE| Default language | fr
 
-## Run the project
+#### Run the project
 
 By default, to run the project, you may just run this : 
 
@@ -24,7 +35,8 @@ By default, to run the project, you may just run this :
 
 It will launch the server in: http://localhost:3000/ .
 
-# I18N
+
+## I18N
 
 In this project, i18n is implemented, with the whole necessary configuration.
 
