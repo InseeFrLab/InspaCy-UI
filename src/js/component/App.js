@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Editor, Modale, Buttons, Result, Flags } from "./js/component";
-import "./App.css";
 import { useTranslation } from "react-i18next";
+import { Editor, Modale, Buttons, Result, Flags } from ".";
+import "./App.scss";
 
 function App() {
   const [showModale, setShowModale] = useState(false),
@@ -18,7 +18,7 @@ function App() {
   if (pageParams.get("lang") && pageParams.get("lang") !== i18n.language)
     i18n.changeLanguage(pageParams.get("lang").toLowerCase());
   return (
-    <section className="App">
+    <section data-testid="app" className="App">
       <Editor
         translator={translator}
         textValue={textValue}
